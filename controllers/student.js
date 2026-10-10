@@ -28,8 +28,9 @@ const student ={
    //display all students
   index: async (req, res) => {
     const students = await Student.findAll();
-    res.json(students);
+    res.render("insert", { students });
   },
+
 
   insert: async (req, res) => {
     const { FirstName, LastName, MiddleName, Program, YearLevel, Section } = req.body;
@@ -41,7 +42,15 @@ const student ={
       YearLevel,
       Section,
     });
-    res.json(student);
+    //res.json(student);
+    res.redirect("/students");
+  },
+
+   edit: async (req, res) => {
+    const { id } = req.params;
+    const found = await Student.findByPk(id);
+    if (!found) return res.redirect("/students");
+    res.render("edit", { student: found.toJSON() });
   },
 
   update: async (req, res) => {
@@ -57,7 +66,7 @@ const student ={
       YearLevel,
       Section,
     });
-    res.json(student);
+   res.redirect("/students");
   },
 
   delete: async (req, res) => {
@@ -65,8 +74,11 @@ const student ={
     const student = await Student.findByPk(id);
     
     await student.destroy();
-    res.json({ message: "Student deleted" });
+    res.redirect("/students");
   },
 
+  
 };
+
+
 export { student };

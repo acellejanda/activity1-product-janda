@@ -31,7 +31,7 @@ import { student } from "../controllers/student.js";
 import { book } from "../controllers/book.js";
 
 const router = express.Router();
-router.get("/", homePage);
+router.get("/", student.index);
 
 import { loginPage, registerPage, forgotPasswordPage, dashboardPage, loginUser, registerUser, logoutUser } from "../controllers/authController.js";
 
@@ -52,7 +52,9 @@ router.post("/students", student.insert);
 router.get("/students", student.index);
 router.put("/students/:id", student.update);
 router.delete("/students/:id", student.delete);
-
+router.get("/students/:id/edit", student.edit);
+router.post("/students/:id/update", student.update);
+router.post("/students/:id/delete", student.delete);
 // Book CRUD routes
 router.post("/books", book.insert);  //create
 router.get("/books", book.index);   //read all

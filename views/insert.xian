@@ -1,0 +1,48 @@
+Sure:
+
+<body class="bg-gray-50">
+  <div class="container mx-auto px-4 py-8">
+    <form method="post" action="/students">
+      <input type="text" name="FirstName" placeholder="FirstName">
+      <input type="text" name="LastName" placeholder="LastName">
+      <input type="text" name="MiddleName" placeholder="MiddleName">
+      <input type="text" name="Program" placeholder="Program">
+      <input type="text" name="YearLevel" placeholder="YearLevel">
+      <input type="text" name="Section" placeholder="Section">
+      <input type="submit">
+    </form>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>MiddleName</th>
+        <th>Program</th>
+        <th>YearLevel</th>
+        <th>Section</th>
+        <th>Action</th>
+      </tr>
+      {{#each students}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{FirstName}}</td>
+        <td>{{LastName}}</td>
+        <td>{{MiddleName}}</td>
+        <td>{{Program}}</td>
+        <td>{{YearLevel}}</td>
+        <td>{{Section}}</td>
+        <td>
+          <a href="/students/{{id}}/edit" class="text-blue-500">Edit</a>
+         <form method="post" action="/students/{{id}}/delete" style="display:inline">
+        <button type="submit">Delete</button>
+        </form>
+        </td>
+
+        
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+{{> footer }}
+````

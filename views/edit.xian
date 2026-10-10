@@ -1,0 +1,15 @@
+<div class="mt-10">
+  <h2 class="text-2xl font-bold mb-4">Edit Student</h2>
+
+  <form method="post" action="/students/{{student.id}}/update">
+    <input type="text" name="FirstName"  value="{{student.FirstName}}"  placeholder="FirstName">
+    <input type="text" name="LastName"   value="{{student.LastName}}"   placeholder="LastName">
+    <input type="text" name="MiddleName" value="{{student.MiddleName}}" placeholder="MiddleName">
+    <input type="text" name="Program"    value="{{student.Program}}"    placeholder="Program">
+    <input type="text" name="YearLevel"  value="{{student.YearLevel}}"  placeholder="YearLevel">
+    <input type="text" name="Section"    value="{{student.Section}}"    placeholder="Section">
+    <button type="submit">Update</button>
+  </form>
+</div>
+
+{{> footer}}
